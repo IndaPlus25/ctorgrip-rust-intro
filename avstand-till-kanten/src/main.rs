@@ -21,7 +21,7 @@ fn main() {
             rectangle[y][x] = if jumps <= 9 {
                 std::char::from_digit(jumps as u32, 10).unwrap()
             } else {
-                ','
+                '.'
             }
         }
     }
@@ -55,5 +55,5 @@ fn manhattan_to_edge(r: usize, k: usize, x: usize, y: usize) -> usize {
     let right = k - 1 - x;
     let bottom = r - 1 - y;
 
-    min(min(top, bottom), min(left, right))
+    [top, left, right, bottom].iter().copied().min().unwrap()
 }
