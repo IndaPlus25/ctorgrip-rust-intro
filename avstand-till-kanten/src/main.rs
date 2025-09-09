@@ -9,16 +9,32 @@ fn main() {
         .collect::<Vec<usize>>();
 
     let (r, k) = (input[0], input[1]);
-    let mut rectangle: Vec<Vec<usize>> = vec![vec![0; k]; r];
+    let mut rectangle: Vec<Vec<char>> = vec![vec![' '; k]; r];
 
+    // handling each coordinate and calculating distance to edge
     #[allow(clippy::needless_range_loop)]
     for y in 0..r {
         for x in 0..k {
             let distance = manhattan_to_edge(r, k, x, y);
             let jumps = distance + 1;
-            rectangle[y][x] = jumps
+
+            rectangle[y][x] = if jumps <= 9 {
+                std::char::from_digit(jumps as u32, 10).unwrap()
+            } else {
+                ','
+            }
         }
     }
+
+    // kattis output
+    // let mut output = String::new();
+    // for row in rectangle {
+    //     for target in row {
+    //         output.push();
+    //     }
+
+    //     output.push('\n');
+    // }
 }
 
 // https://en.wikipedia.org/wiki/Taxicab_geometry
