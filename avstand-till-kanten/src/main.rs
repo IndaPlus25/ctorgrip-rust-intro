@@ -1,4 +1,4 @@
-use std::{cmp::min, io::stdin};
+use std::io::stdin;
 
 fn main() {
     let mut buf = String::new();
