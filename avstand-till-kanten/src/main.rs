@@ -27,14 +27,16 @@ fn main() {
     }
 
     // kattis output
-    // let mut output = String::new();
-    // for row in rectangle {
-    //     for target in row {
-    //         output.push();
-    //     }
+    let mut output = String::new();
+    for row in rectangle {
+        for target in row {
+            output.push(target);
+        }
 
-    //     output.push('\n');
-    // }
+        output.push('\n');
+    }
+
+    print!("{output}")
 }
 
 // https://en.wikipedia.org/wiki/Taxicab_geometry
@@ -51,7 +53,7 @@ fn manhattan_to_edge(r: usize, k: usize, x: usize, y: usize) -> usize {
     let top = y;
     let left = x;
     let right = k - 1 - x;
-    let bottom = r - 1 - x;
+    let bottom = r - 1 - y;
 
     min(min(top, bottom), min(left, right))
 }
